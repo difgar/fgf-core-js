@@ -1,14 +1,14 @@
 const express = require('express');
-const { usersMock } = require('../utils/mocks/usersMock')
+const UsersService = require('../services/users');
 
 function usersApi(app) {
     const router = express.Router();
-
+    const usersService = new UsersService();
     app.use('/api/users', router);
 
     router.get('/', async function(req, res, next) {
         try {
-            const users = await Promise.resolve(usersMock);
+            const users = await usersService.getUsers();
 
             res.status(200).json({
                 status: 'OK',

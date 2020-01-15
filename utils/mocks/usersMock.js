@@ -70,4 +70,4 @@ const usersMock = [{
     "ip_address": "30.220.15.245"
 }];
 
-module.exports = usersMock;
+module.exports = { usersMock };

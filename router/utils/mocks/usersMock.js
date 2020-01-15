@@ -1,0 +1,73 @@
+const usersMock = [{
+    "id": 1,
+    "first_name": "Loy",
+    "last_name": "Whicher",
+    "email": "lwhicher0@narod.ru",
+    "gender": "Male",
+    "ip_address": "229.164.131.84"
+}, {
+    "id": 2,
+    "first_name": "Dewain",
+    "last_name": "Gegg",
+    "email": "dgegg1@gov.uk",
+    "gender": "Male",
+    "ip_address": "118.186.101.95"
+}, {
+    "id": 3,
+    "first_name": "Emogene",
+    "last_name": "Edghinn",
+    "email": "eedghinn2@cloudflare.com",
+    "gender": "Female",
+    "ip_address": "57.4.234.245"
+}, {
+    "id": 4,
+    "first_name": "Giustina",
+    "last_name": "Hanster",
+    "email": "ghanster3@amazonaws.com",
+    "gender": "Female",
+    "ip_address": "145.246.25.143"
+}, {
+    "id": 5,
+    "first_name": "Betsy",
+    "last_name": "Stickney",
+    "email": "bstickney4@imgur.com",
+    "gender": "Female",
+    "ip_address": "183.85.243.117"
+}, {
+    "id": 6,
+    "first_name": "Baxter",
+    "last_name": "Arundale",
+    "email": "barundale5@intel.com",
+    "gender": "Male",
+    "ip_address": "71.195.80.191"
+}, {
+    "id": 7,
+    "first_name": "Brendin",
+    "last_name": "Easterfield",
+    "email": "beasterfield6@dagondesign.com",
+    "gender": "Male",
+    "ip_address": "253.129.197.245"
+}, {
+    "id": 8,
+    "first_name": "Brocky",
+    "last_name": "Larwell",
+    "email": "blarwell7@simplemachines.org",
+    "gender": "Male",
+    "ip_address": "195.200.240.146"
+}, {
+    "id": 9,
+    "first_name": "Elbertina",
+    "last_name": "Heinecke",
+    "email": "eheinecke8@arstechnica.com",
+    "gender": "Female",
+    "ip_address": "62.142.4.100"
+}, {
+    "id": 10,
+    "first_name": "Ashla",
+    "last_name": "Pedrocchi",
+    "email": "apedrocchi9@forbes.com",
+    "gender": "Female",
+    "ip_address": "30.220.15.245"
+}];
+
+module.exports = usersMock;

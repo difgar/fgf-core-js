@@ -4,8 +4,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "DEBUG=app:* nodemon index",
-        "start": "MODE_ENV=production node index"
+        "dev": "DEBUG=express:*,app:* nodemon index",
+        "start": "MODE_ENV=production node index",
+        "inspect": "DEBUG=express:*,app:* nodemon --inspect index",
+        "docker:build": "docker build -t fgf-core .",
+        "docker:run": "docker run -p 3000:3000 --name fgf-core fgf-core",
+        "docker:stop": "docker rm -f fgf-core"
     },
     "repository": {
         "type": "git",
@@ -20,7 +24,7 @@
     "homepage": "https://github.com/difgar/fgf-core#readme",
     "dependencies": {
         "@hapi/boom": "^9.0.0",
-        "@hapi/joi": "^17.0.2",
+        "@hapi/joi": "^17.1.0",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "morgan": "^1.9.1",

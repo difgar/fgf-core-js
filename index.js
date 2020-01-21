@@ -6,6 +6,7 @@ const notFoundHandler = require('./utils/middleware/notFoundHandler');
 const morgan = require('morgan');
 const path = require('path');
 const rfs = require('rotating-file-stream');
+const debug = require("debug")("app:server");
 
 const app = express();
 
@@ -33,5 +34,5 @@ app.use(wraperError);
 app.use(errorHanlder);
 
 app.listen(config.port, () => {
-    console.log(`Listening http://localhost:${config.port}`);
+    debug(`Listening on http://localhost:${config.port}`);
 });

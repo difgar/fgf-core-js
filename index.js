@@ -1,6 +1,7 @@
 const express = require('express');
 const { config } = require('./config/index');
 const usersApi = require('./router/users');
+const authApi = require('./router/auth');
 const { logErrors, wraperError, errorHanlder } = require('./utils/middleware/errorHandler');
 const notFoundHandler = require('./utils/middleware/notFoundHandler');
 const morgan = require('morgan');
@@ -23,6 +24,7 @@ app.use(morgan('combined', { stream: accessLogStream }))
 app.use(express.json());
 
 //routers
+authApi(app);
 usersApi(app);
 
 //Catch 404

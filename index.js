@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 const { config } = require('./config/index');
 const usersApi = require('./router/users');
 const authApi = require('./router/auth');
@@ -22,6 +23,8 @@ app.use(morgan('combined', { stream: accessLogStream }))
 
 //Body parser
 app.use(express.json());
+
+app.use(helmet());
 
 //routers
 authApi(app);

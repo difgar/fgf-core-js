@@ -1,6 +1,8 @@
 const express = require('express');
+const helmet = require('helmet');
 const { config } = require('./config/index');
 const usersApi = require('./router/users');
+const authApi = require('./router/auth');
 const { logErrors, wraperError, errorHanlder } = require('./utils/middleware/errorHandler');
 const notFoundHandler = require('./utils/middleware/notFoundHandler');
 const morgan = require('morgan');
@@ -22,7 +24,10 @@ app.use(morgan('combined', { stream: accessLogStream }))
 //Body parser
 app.use(express.json());
 
+app.use(helmet());
+
 //routers
+authApi(app);
 usersApi(app);
 
 //Catch 404

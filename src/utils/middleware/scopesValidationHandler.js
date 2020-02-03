@@ -6,14 +6,14 @@ function scopesValidationHandler(allowedScopes) {
             return next(boom.unauthorized('Missing scopes'));
         }
 
-        const hasAccess = allowedScopes.map(allowedScope => req.user.scopes.includes(allowedScope)).find(allowed => Boolean(allowed));
+        const hasAccess = allowedScopes.map((allowedScope) => req.user.scopes.includes(allowedScope)).find((allowed) => Boolean(allowed));
 
         if (!hasAccess) {
             return next(boom.unauthorized('Insufficient scopes'));
         }
 
-        next();
-    }
+        return next();
+    };
 }
 
 module.exports = scopesValidationHandler;

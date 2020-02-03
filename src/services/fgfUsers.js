@@ -1,9 +1,9 @@
 const { usersMock } = require('../utils/mocks/usersMock');
 
 class UsersService {
-    async getUser({ email }) {
+    static async getUser({ email }) {
         const users = await Promise.resolve(usersMock);
-        return users.find(user => user.email === email);
+        return users.find((user) => user.email === email);
     }
 }
 

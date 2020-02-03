@@ -13,14 +13,14 @@ const createUserSchema = Joi.object({
     id: userIdSchemaDef.required(),
     name: userNameSchema.required(),
     middleName: userMiddleNameSchema,
-    lastName: userLastNameSchema.required()
+    lastName: userLastNameSchema.required(),
 });
 
 const updateUserSchema = Joi.object({
     id: userIdSchemaDef.required(),
     name: userNameSchema.required(),
     middleName: userMiddleNameSchema,
-    lastName: userLastNameSchema.required()
+    lastName: userLastNameSchema.required(),
 });
 
 module.exports = { userIdSchema, createUserSchema, updateUserSchema };

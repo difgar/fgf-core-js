@@ -1,14 +1,14 @@
+const debug = require('debug')('app:error');
 const boom = require('@hapi/boom');
 const { config } = require('../../config');
-const debug = require("debug")("app:error");
 
 function withErrorStack(error, stack) {
     const response = {
         status: 'ERROR',
-        ...error
+        ...error,
     };
     if (config.dev) {
-        return {...response, stack };
+        return { ...response, stack };
     }
     return response;
 }
@@ -25,13 +25,12 @@ function wraperError(err, req, res, next) {
     next(err);
 }
 
-// eslint-disable-next-line no-unused-vars
 function errorHanlder(err, req, res, next) {
 
     const { output: { statusCode, payload } } = err;
 
     res.status(statusCode);
-    res.json(withErrorStack(payload, err.stack))
+    res.json(withErrorStack(payload, err.stack));
 }
 
-module.exports = { logErrors, errorHanlder, wraperError }
+module.exports = { logErrors, errorHanlder, wraperError };

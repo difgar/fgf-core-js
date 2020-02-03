@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const UsersService = require('../../../services/fgfUsers');
 
 passport.use(new BasicStrategy(
-    async function(email, password, cb) {
+    (async (email, password, cb) => {
         const users = new UsersService();
 
         try {
@@ -20,8 +20,9 @@ passport.use(new BasicStrategy(
 
             //TODO: esta linea se comento ya que se esta sacando los datos de memoria y no de un Base de datos
             //delete user.password;
-            cb(null, user);
+            return cb(null, user);
         } catch (error) {
-            cb(error);
+            return cb(error);
         }
-    }));
+    }),
+));

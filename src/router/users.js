@@ -10,70 +10,67 @@ require('../utils/auth/strategies/jwt');
 
 function usersApi(app) {
     const router = express.Router();
-    const usersService = new UsersService();
     app.use('/api/users', router);
 
     router.get('/',
-        async function(req, res, next) {
+        async (req, res, next) => {
             try {
-                const users = await usersService.getUsers();
+                const users = await UsersService.getUsers();
 
                 res.status(200).json({
                     status: 'OK',
                     message: 'users listed',
-                    data: users
+                    data: users,
                 });
             } catch (error) {
                 next(error);
             }
-        }
-    );
+        });
 
     router.get('/:userId',
         passport.authenticate('jwt', { session: false }),
         scopesValidationHandler(['create:users']),
         validationHandler(userIdSchema, 'params'),
-        async function(req, res, next) {
+        async (req, res, next) => {
             const { userId } = req.param;
             try {
-                const users = await usersService.getUser({ userId });
+                const users = await UsersService.getUser({ userId });
 
                 res.status(200).json({
                     status: 'OK',
                     message: 'user listed',
-                    data: users
+                    data: users,
                 });
             } catch (error) {
                 next(error);
             }
-        }
-    );
+        });
 
-    router.post('/', validationHandler(createUserSchema, 'body'), async function(req, res, next) {
+    router.post('/', validationHandler(createUserSchema, 'body'), async (req, res, next) => {
         const { body: user } = req;
         try {
-            const userId = await usersService.createUser({ user });
+            const userId = await UsersService.createUser({ user });
 
             res.status(200).json({
                 status: 'OK',
                 message: `user '${userId}' created`,
-                data: userId
+                data: userId,
             });
         } catch (error) {
             next(error);
         }
     });
 
-    router.put('/:userId', validationHandler(userIdSchema, 'params'), validationHandler(createUserSchema, 'body'), async function(req, res, next) {
+    router.put('/:userId', validationHandler(userIdSchema, 'params'), validationHandler(createUserSchema, 'body'), async (req, res, next) => {
         const { body: user } = req;
         const { userId } = req.param;
         try {
-            const newUserId = await usersService.updateUser({ userId, user });
+            const newUserId = await UsersService.updateUser({ userId, user });
 
             res.status(200).json({
                 status: 'OK',
                 message: `user '${newUserId}' updated`,
-                data: userId
+                data: userId,
             });
         } catch (error) {
             next(error);

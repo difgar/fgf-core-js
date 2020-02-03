@@ -10,7 +10,7 @@ function validationHandler(schema, check = 'body') {
         const error = validate(req[check], schema);
 
         error ? next(boom.badRequest(error)) : next();
-    }
+    };
 }
 
 module.exports = validationHandler;

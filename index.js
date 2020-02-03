@@ -1,25 +1,25 @@
 const express = require('express');
 const helmet = require('helmet');
-const { config } = require('./config/index');
-const usersApi = require('./router/users');
-const authApi = require('./router/auth');
-const { logErrors, wraperError, errorHanlder } = require('./utils/middleware/errorHandler');
-const notFoundHandler = require('./utils/middleware/notFoundHandler');
 const morgan = require('morgan');
 const path = require('path');
 const rfs = require('rotating-file-stream');
-const debug = require("debug")("app:server");
+const debug = require('debug')('app:server');
+const { config } = require('./src/config');
+const usersApi = require('./src/router/users');
+const authApi = require('./src/router/auth');
+const { logErrors, wraperError, errorHanlder } = require('./src/utils/middleware/errorHandler');
+const notFoundHandler = require('./src/utils/middleware/notFoundHandler');
 
 const app = express();
 
 // create a rotating write stream
 const accessLogStream = rfs.createStream('access.log', {
     interval: '1d', // rotate daily
-    path: path.join(__dirname, 'log')
-})
+    path: path.join(__dirname, 'log'),
+});
 
 //Logger
-app.use(morgan('combined', { stream: accessLogStream }))
+app.use(morgan('combined', { stream: accessLogStream }));
 
 //Body parser
 app.use(express.json());

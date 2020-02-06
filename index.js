@@ -1,6 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const cors = require('cors');
 const path = require('path');
 const rfs = require('rotating-file-stream');
 const debug = require('debug')('app:server');
@@ -21,9 +22,13 @@ const accessLogStream = rfs.createStream('access.log', {
 //Logger
 app.use(morgan('combined', { stream: accessLogStream }));
 
+//Cors
+app.use(cors());
+
 //Body parser
 app.use(express.json());
 
+//Security
 app.use(helmet());
 
 //routers

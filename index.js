@@ -6,8 +6,9 @@ const path = require('path');
 const rfs = require('rotating-file-stream');
 const debug = require('debug')('app:server');
 const { config } = require('./src/config');
-const usersApi = require('./src/router/users');
 const authApi = require('./src/router/auth');
+const usersApi = require('./src/router/users');
+const accountsApi = require('./src/router/accounts');
 const { logErrors, wraperError, errorHanlder } = require('./src/utils/middleware/errorHandler');
 const notFoundHandler = require('./src/utils/middleware/notFoundHandler');
 
@@ -34,6 +35,7 @@ app.use(helmet());
 //routers
 authApi(app);
 usersApi(app);
+accountsApi(app);
 
 //Catch 404
 app.use(notFoundHandler);

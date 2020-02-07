@@ -17,9 +17,9 @@ function authApi(app) {
         const { apiKeyToken } = req.body;
         try {
             if (!apiKeyToken) {
-                next(boom.unauthorized('apiKeyToken is required'));
+                return next(boom.unauthorized('apiKeyToken is required'));
             }
-            passport.authenticate('basic', (error, user) => {
+            return passport.authenticate('basic', (error, user) => {
                 try {
                     if (error || !user) {
                         return next(boom.unauthorized());

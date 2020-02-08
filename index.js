@@ -9,6 +9,7 @@ const { config } = require('./src/config');
 const authApi = require('./src/router/auth');
 const usersApi = require('./src/router/users');
 const accountsApi = require('./src/router/accounts');
+const movementsApi = require('./src/router/movements');
 const { logErrors, wraperError, errorHanlder } = require('./src/utils/middleware/errorHandler');
 const notFoundHandler = require('./src/utils/middleware/notFoundHandler');
 
@@ -36,6 +37,7 @@ app.use(helmet());
 authApi(app);
 usersApi(app);
 accountsApi(app);
+movementsApi(app);
 
 //Catch 404
 app.use(notFoundHandler);

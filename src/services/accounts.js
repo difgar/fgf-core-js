@@ -6,7 +6,6 @@ class AccountService {
         let accounts = await Accounts.getAll();
         accounts = accounts ? transformAccount(accounts) : [];
 
-        console.log('accounts', accounts.length);
         const mainAccount = accounts.filter((account) => !account.fatherAccountId);
 
         // eslint-disable-next-line no-use-before-define

@@ -1,14 +1,14 @@
 const MysqlLib = require('../lib/dbConnection');
 
-class Accounts {
-    static async getAll() {
+class Movements {
+    static async getMovementsByPeriod(accountId, period) {
         let con;
         try {
             con = await MysqlLib.connect();
             await con.query('START TRANSACTION');
-            const accounts = await con.query('SELECT * FROM v_saldos');
+            const movements = await con.query(`select * from v_movimientos where id_cuenta=${accountId} and year(fecha)=${period}`);
             await con.query('COMMIT');
-            return JSON.parse(JSON.stringify(accounts));;
+            return JSON.parse(JSON.stringify(movements));;
         } catch (ex) {
             console.log(ex);
             throw ex;
@@ -21,4 +21,4 @@ class Accounts {
     }
 }
 
-module.exports = Accounts;
+module.exports = Movements;

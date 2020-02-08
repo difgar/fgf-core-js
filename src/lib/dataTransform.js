@@ -30,6 +30,19 @@ const accountTemplate = {
     accounts: '{{accounts}}',
 };
 
+const movementsTemplate = {
+    id: '{{ID_MOVIMIENTO}}',
+    accountId: '{{ID_CUENTA}}',
+    account: '{{CUENTA}}',
+    societyId: '{{ID_SOCIEDAD}}',
+    society: '{{SOCIEDAD}}',
+    date: '{{FECHA}}',
+    description: '{{DESCRIPCION}}',
+    must: '{{DEBE}}',
+    have: '{{HABER}}',
+    idTransaction: '{{ID_TRANSACCION}}',
+};
+
 const transformUser = (userData) => {
     return userData.map((user) => {
         return transform(userTemplate, user);
@@ -42,4 +55,10 @@ const transformAccount = (accountData) => {
     });
 };
 
-module.exports = { transformUser, transformAccount };
+const transformMovements = (movementsData) => {
+    return movementsData.map((movements) => {
+        return transform(movementsTemplate, movements);
+    });
+};
+
+module.exports = { transformUser, transformAccount, transformMovements };

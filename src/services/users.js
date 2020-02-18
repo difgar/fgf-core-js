@@ -1,10 +1,13 @@
 const debug = require('debug')('app:services');
+const Users = require('../daos/users');
+const { transformUser } = require('../lib/dataTransform');
+
 const { usersMock } = require('../utils/mocks/usersMock');
 
 class UsersService {
     static async getUsers() {
-        const users = await Promise.resolve(usersMock);
-        return users || [];
+        const users = await Users.getAll();
+        return users ? transformUser(users) : [];
     }
 
     static async getUser({ userId }) {

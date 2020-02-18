@@ -1,7 +1,7 @@
 {
     "name": "fgf-core",
     "version": "1.0.0",
-    "description": "",
+    "description": "FGF's Core",
     "main": "index.js",
     "scripts": {
         "dev": "DEBUG=express:*,app:* nodemon index",
@@ -27,30 +27,32 @@
         "@hapi/joi": "^17.1.0",
         "babel-eslint": "^10.0.3",
         "bcrypt": "^3.0.7",
+        "cors": "^2.8.5",
         "debug": "^4.1.1",
         "dotenv": "^8.2.0",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-plugin-import": "^2.20.1",
         "eslint-plugin-jsx-a11y": "^6.2.3",
         "eslint-plugin-react": "^7.18.3",
+        "eslint-plugin-react-hooks": "^1.7.0",
         "express": "^4.17.1",
         "helmet": "^3.21.2",
+        "json-to-json-transformer": "^1.1.0",
         "jsonwebtoken": "^8.5.1",
         "morgan": "^1.9.1",
+        "mysql": "^2.18.1",
         "passport": "^0.4.1",
         "passport-http": "^0.3.0",
         "passport-jwt": "^4.0.0",
+        "promise-mysql": "^4.1.3",
         "rotating-file-stream": "^2.0.1"
     },
     "devDependencies": {
         "chalk": "^3.0.0",
         "eslint": "^6.8.0",
-        "eslint-config-prettier": "^6.9.0",
-        "eslint-plugin-prettier": "^3.1.2",
         "husky": "^4.0.7",
         "lint-staged": "^9.5.0",
-        "nodemon": "^2.0.2",
-        "prettier": "^1.19.1"
+        "nodemon": "^2.0.2"
     },
     "husky": {
         "hooks": {

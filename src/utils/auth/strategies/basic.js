@@ -6,10 +6,8 @@ const UsersService = require('../../../services/fgfUsers');
 
 passport.use(new BasicStrategy(
     (async (email, password, cb) => {
-        const users = new UsersService();
-
         try {
-            const user = await users.getUser({ email });
+            const user = await UsersService.getUser({ email });
             if (!user) {
                 return cb(boom.unauthorized(), false);
             }
@@ -22,7 +20,7 @@ passport.use(new BasicStrategy(
             //delete user.password;
             return cb(null, user);
         } catch (error) {
-            return cb(error);
+            return cb(error, fasle);
         }
     }),
 ));

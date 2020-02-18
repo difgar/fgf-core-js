@@ -6,7 +6,7 @@ class Movements {
         try {
             con = await MysqlLib.connect();
             await con.query('START TRANSACTION');
-            const movements = await con.query(`select * from v_movimientos where id_cuenta=${accountId} and year(fecha)=${period}`);
+            const movements = await con.query(`select * from v_movimientos where id_cuenta=${accountId} and year(fecha)=${period} order by fecha,id_movimiento`);
             await con.query('COMMIT');
             return JSON.parse(JSON.stringify(movements));;
         } catch (ex) {
